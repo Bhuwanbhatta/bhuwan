@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.pattern-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(30deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
+        linear-gradient(150deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
+        linear-gradient(30deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
+        linear-gradient(150deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
+        linear-gradient(60deg, #111 25%, transparent 25.5%, transparent 75%, #111 75%, #111),
+        linear-gradient(60deg, #111 25%, transparent 25.5%, transparent 75%, #111 75%, #111);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    opacity: 0.1;
+    z-index: -1;
+    animation: patternMove 20s linear infinite;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pattern-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.pattern-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hexagon Pattern */
+.hexagon-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.hexagon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    animation: rotateHex 3s infinite linear;
+}
+
+.hexagon:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.hexagon:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* Wave Pattern */
+.wave-container {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.wave {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #4ecdc4;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    animation: wave 2s infinite ease-in-out;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Grid Pattern */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.grid-item {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    animation: pulse 2s infinite;
+}
+
+.grid-item:nth-child(even) {
+    animation-delay: 1s;
+}
+
+/* Circle Pattern */
+.circle-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    animation: morphCircle 3s infinite;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 2s;
+}
+
+/* Interactive Pattern */
+.interactive-pattern {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.mouse-pattern {
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.pattern-dot {
+    width: 10px;
+    height: 10px;
+    background: #4ecdc4;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+/* Animations */
+@keyframes patternMove {
+    from {
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    }
+    to {
+        background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px, 80px 140px, 120px 210px;
+    }
+}
+
+@keyframes rotateHex {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+}
+
+@keyframes morphCircle {
+    0%, 100% {
+        border-radius: 50%;
+    }
+    50% {
+        border-radius: 10%;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .pattern-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.bb
+{
+    width: 100px;
+    height: 100px;
+}
+.bh
+{
+    width: 100%;
+    height: 100%;
+}
+.bc
+{
+    width: 100px;
+    height: 100px;
+}
+.bd
+{
+    width: 810px;
+    height: 310px;
+}
+.bg
+{
+    width: 60px;
+    height: 60px;
+}
